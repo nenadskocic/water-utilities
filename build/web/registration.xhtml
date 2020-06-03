@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="templates/main_layout.xhtml">
+        <ui:define name="title">#{msgs.regist}</ui:define>
+
+        <ui:define name="mainContent">
+            <h:form id="regForm" class="form hero">
+                <h:panelGrid columns="3">
+                    #{msgs.username}
+                    <h:inputText value="#{registerBean.username}" id="username">
+                        <f:ajax execute="@this" render="errorUsername" 
+                                event="blur" />
+                    </h:inputText>
+                    <h:message styleClass="err" id="errorUsername" for="username" />
+
+                    #{msgs.address}
+                    <h:inputText value="#{registerBean.address}" id="address">
+                        <f:ajax execute="@this" render="errorAddress" 
+                                event="blur" />
+                    </h:inputText>
+                    <h:message styleClass="err" id="errorAddress" for="address" />
+
+                    #{msgs.meterID}
+                    <h:inputText value="#{registerBean.meterID}" id="meterID">
+                        <f:ajax execute="@this" render="errorMeterID" 
+                                event="blur" />
+                    </h:inputText>
+                    <h:message styleClass="err" id="errorMeterID" for="meterID" />
+
+                    #{msgs.password}
+                    <h:inputSecret value="#{registerBean.password}" id="password" 
+                                   validator="#{registerBean.validatePassword}">
+                        <f:ajax execute="@this" render="errorPassword" event="blur" />
+                    </h:inputSecret>
+                    <h:message styleClass="err" id="errorPassword" for="password" /> 
+
+                    #{msgs.confirmPassword}
+                    <h:inputSecret value="#{registerBean.confirmPassword}" id="confirmpassword"
+                                   validator="#{registerBean.validateConfirm}" >
+                        <f:ajax execute="password @this" render="errorConfirm" 
+                                event="blur" />
+                    </h:inputSecret>
+                    <h:message styleClass="err" id="errorConfirm" for="confirmpassword" />
+
+                    <h:commandButton value="#{msgs.register}" action="#{registerBean.registerUser()}" class="success"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

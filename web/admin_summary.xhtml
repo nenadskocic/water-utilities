@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"          
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="templates/main_layout.xhtml">
+
+        <ui:define name="mainContent">
+            <h1>#{msgs.usageSummary}</h1>
+
+            <h:panelGrid columns="1" class="table hero">
+                <h:outputText value="#{msgs.totalAmount}3"/>
+                <h:outputText value="#{msgs.lowAmount}3"/>   
+                <h:outputText value="#{msgs.medAmount}3"/>
+                <h:outputText value="#{msgs.highAmount}3"/> 
+                <h:outputText value="#{msgs.dailyHousehold}"/> 
+            </h:panelGrid>
+
+            <h1>#{msgs.currentSummary}</h1>
+            <h:panelGrid columns="3" class="table hero">
+                <h:outputText value="#{msgs.item}"/>
+                <h:outputText value="#{msgs.rate}"/>
+                <h:outputText value="#{msgs.cost}"/>
+
+                #{msgs.costLowAmt}
+                <h:outputText value="#{adminMainBean.feeType.lowRate}">
+                    <f:convertNumber currencySymbol="$" minFractionDigits="1"
+                                     maxFractionDigits="2"/>
+                </h:outputText>
+                <h:outputText value="#{adminMainBean.lowAmountCost}">
+                    <f:convertNumber currencySymbol="$" minFractionDigits="1"
+                                     maxFractionDigits="2"/>
+                </h:outputText>
+
+                #{msgs.costMedAmt}
+                <h:outputText value="#{adminMainBean.feeType.mediumRate}">
+                    <f:convertNumber currencySymbol="$" minFractionDigits="1"
+                                     maxFractionDigits="2"/>
+                </h:outputText>
+
+                <h:outputText value="#{adminMainBean.medAmountCost}">
+                    <f:convertNumber currencySymbol="$" minFractionDigits="1"
+                                     maxFractionDigits="2"/>
+                </h:outputText>
+
+                #{msgs.costHighAmt}
+                <h:outputText value="#{adminMainBean.feeType.highRate}">
+                    <f:convertNumber currencySymbol="$" minFractionDigits="1"
+                                     maxFractionDigits="2"/>
+                </h:outputText>
+                <h:outputText value="#{adminMainBean.highAmountCost}">
+                    <f:convertNumber currencySymbol="$" minFractionDigits="1"
+                                     maxFractionDigits="2"/>
+                </h:outputText>
+
+                #{msgs.adminFee}
+                <h:outputText value=""/>
+                <h:outputText value="#{adminMainBean.feeType.adminFee}">
+                    <f:convertNumber currencySymbol="$" minFractionDigits="1"
+                                     maxFractionDigits="2"/>
+                </h:outputText>
+
+                #{msgs.subTotal}
+                <h:outputText value=""/>
+                <h:outputText value="#{adminMainBean.subtotal}">
+                    <f:convertNumber currencySymbol="$" minFractionDigits="1"
+                                     maxFractionDigits="2"/>
+                </h:outputText>
+
+                #{msgs.tax}
+                <h:outputText value=""/>
+                <h:outputText value="#{adminMainBean.amt*0.13}">
+                    <f:convertNumber currencySymbol="$" minFractionDigits="1"
+                                     maxFractionDigits="2"/>
+                </h:outputText>
+
+                #{msgs.total}
+                <h:outputText value=""/>
+                <h:outputText value="#{adminMainBean.taxVal}">
+                    <f:convertNumber currencySymbol="$" minFractionDigits="1"
+                                     maxFractionDigits="2"/>
+                </h:outputText>
+            </h:panelGrid>
+        </ui:define>
+    </ui:composition>
+</html>

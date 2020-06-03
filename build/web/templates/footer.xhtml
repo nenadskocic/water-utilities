@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html [
+<!ENTITY copy "&#169;"> ]> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition>
+        <footer class="footer clearfix">
+            <div class="copyright">
+                <h:outputText value="&copy;2017 #{msgs.copyright}"></h:outputText>
+            </div>
+
+            <nav class="menu_bottom">
+                <h:form id="language">
+                    <ul>
+                        <li><h:commandLink action="#{language.changeLanguage('fr')}">#{msgs.french}</h:commandLink></li>
+                        <li><h:commandLink action="#{language.changeLanguage('en')}">#{msgs.english}</h:commandLink></li>
+                    </ul>
+                </h:form>
+            </nav>
+        </footer>
+    </ui:composition>
+</html>

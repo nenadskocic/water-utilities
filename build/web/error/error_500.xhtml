@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+<ui:composition template="/templates/temp.xhtml">
+    
+    <ui:define name="windowTitle">
+        Internal Server Error
+    </ui:define>
+
+    
+    <ui:define name="menulinks">
+      <h:link outcome="/index">Home</h:link> 
+    </ui:define>
+
+
+    
+    <ui:define name="Content">
+        <h1>Internal Server Error</h1>
+        <h2>The Server has run into an internal error</h2>
+        <h:inputTextarea value="#{error.stackTrace}" rows="40" cols="80" readonly="true" />
+           
+    </ui:define>
+    
+</ui:composition>
+</html>

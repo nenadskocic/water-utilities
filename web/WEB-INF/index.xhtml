@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"          
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:body>
+        <ui:composition template="/templates/main_layout.xhtml">
+            <ui:define name="title">Meter ID's and Addresses</ui:define>
+            
+            <ui:define name="mainContent">
+                <h:dataTable value="#{adminMainBean.userMeterList}" var="meterList">
+                    <h:column>
+                        <f:facet name="header">#{msgs.meterID}</f:facet>
+                        <h:outputText value="#{meterList.meterId}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msgs.address}</f:facet>
+                        <h:outputText value="#{meterList.address}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msgs.data}</f:facet>
+                        <h:form>
+                            <h:commandButton value="#{meterList.meterId}" action="getdata">
+                                <f:setPropertyActionListener target="#{adminMainBean.meterID}" 
+                                                             value="#{meterList.meterId}" />
+                            </h:commandButton>
+                        </h:form>
+                    </h:column>
+                </h:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

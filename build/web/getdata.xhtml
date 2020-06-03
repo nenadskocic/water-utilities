@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"          
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/templates/main_layout.xhtml">
+        <ui:define name="title">
+            #{msgs.selectedMeter}: #{adminMainBean.displayMeterID}
+        </ui:define>
+
+        <ui:define name="mainContent">
+            <h:form class="form hero">
+                <h:commandButton value="#{msgs.graphSummary}" action="#{adminMainBean.barChart()}" class="success" />
+                <h:dataTable value="#{adminMainBean.meterDetailsModels}" var="mReading" class="table">
+                    <h:column>
+                        <f:facet name="header">#{msgs.date}</f:facet>
+                        <h:outputText value="#{mReading.meterDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>    
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">#{msgs.meterReading}</f:facet>
+                        <h:outputText value="#{mReading.meterReading}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">#{msgs.amountUsed}</f:facet>
+                        <h:outputText value="#{mReading.amountUsed}">
+                            <f:convertNumber 
+                                minFractionDigits="1"
+                                maxFractionDigits="1" />
+                        </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">#{msgs.billTotal}</f:facet>
+                        <h:outputText value="#{mReading.billTotal}">
+                            <f:convertNumber currencySymbol="$"
+                                             minFractionDigits="1"
+                                             maxFractionDigits="2">
+                            </f:convertNumber>
+                        </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">#{msgs.details}</f:facet>
+
+                        <h:link value="#{msgs.details}" outcome="admin_summary"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </ui:define>    
+    </ui:composition>
+</html>
